@@ -1,0 +1,18 @@
+name: Get source branch name
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Get the source branch name
+      run: |
+        if [ "${{ github.head_ref }}" = "test" ]; then
+          echo "::error::Source branch is 'test', which is not allowed."
+          exit 1
+        else
+          echo "Source branch is ${{ github.head_ref }}"
+        fi
