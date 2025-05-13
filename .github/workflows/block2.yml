@@ -2,6 +2,7 @@ name: Get source branch name
 on:
   pull_request:
     branches: [ main ]
+    types: [ opened ]
 
 jobs:
   build:
